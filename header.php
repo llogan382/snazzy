@@ -35,11 +35,12 @@
 			<?php
 			// Add site description to the header.
 			$description = get_bloginfo( 'description', 'display' );
+			$url = home_url();
 			if ( $description || is_customize_preview() ) :
-				printf( '<p class="site-description">%s</p>', esc_html( $description ) );
+				printf( '<a href=' . $url . '><p class="site-description">%s</p></a>', esc_html( $description ) );
+				// printf( '<p class="site-description">%s</p>', esc_html( $description ) );
 			endif;
 			?>
-
 			<?php if ( has_nav_menu( 'primary' ) ) : ?>
 
 				<nav id="site-navigation" class="main-navigation" role="navigation">
