@@ -25,8 +25,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) :
 
 				// Add a title to the posts list.
-				printf( '<h1 class="entry-title archive-title">%s</h1>', esc_html( 'Latest Articles', '@@textdomain' ) );
-
+				printf( '<h1 class="entry-title archive-title">%s</h1>', esc_html( get_theme_mod('custom_blog_title', 'Title') ) );
 				// Start the loop.
 				while ( have_posts() ) : the_post();
 

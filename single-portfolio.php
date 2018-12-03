@@ -15,11 +15,24 @@ get_header();
 
 snazzy_set_post_views( get_the_ID() ); ?>
 
+
 <div id="primary" class="content-area">
+<?php 
+$ftc_link = esc_html( get_theme_mod( 'snazzy_custom_ftc_link' ) );
+if (is_singular() ) {
+	printf(
+		'<p class="snazzy-custom-ftc">%s</p>', esc_html( get_theme_mod( 'snazzy_custom_ftc', 'Test' ) )
+	);
+	echo( '<a  target="_blank" class="snazzy-custom-ftc snazzy-custom-ftc-link" href="//' .
+		$ftc_link . '">Learn More</a>'
+		);
+}
+?>
 
 	<main id="main" class="site-main" role="main">
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 
 			<?php
 			while ( have_posts() ) :
@@ -28,11 +41,14 @@ snazzy_set_post_views( get_the_ID() ); ?>
 
 				snazzy_gallery( $post->ID, 'port-full' );
 
-				get_template_part( 'template-parts/portfolio-content' );
 
 				echo '<div class="project-description">';
 
+
+
 				the_title( '<h1 class="entry-title">', '</h1>' );
+
+				get_template_part( 'template-parts/portfolio-content' );
 
 				echo '<div class="entry-content">';
 					the_content();
@@ -41,15 +57,6 @@ snazzy_set_post_views( get_the_ID() ); ?>
 				// Output the post meta.
 				get_template_part( 'template-parts/portfolio-meta' );
 
-				// Include the post-to-post navigational arrows if selected via the Customizer.
-				if ( true === get_theme_mod( 'portfolio_navigation' ) ) {
-					the_post_navigation(
-						array(
-							'next_text' => '<span class="meta-nav" aria-hidden="true"></span><span class="screen-reader-text">' . esc_html__( 'Next Post', '@@textdomain' ) . '</span><span class="post-title">&rarr;</span>',
-							'prev_text' => '<span class="meta-nav" aria-hidden="true"></span><span class="screen-reader-text">' . esc_html__( 'Previous Post', '@@textdomain' ) . '</span><span class="post-title">&larr;</span>',
-						)
-					);
-				}
 
 				echo '</div">';
 

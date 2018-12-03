@@ -57,7 +57,7 @@ if ( has_post_thumbnail() ) :
         $embed_url = get_post_meta($post->ID, '_bean_portfolio_embed_url', true);
 
         if ( $embed_url ) :
-            printf( '<a href="%s" class="lightbox-link lightbox-play" data-lity></a>', esc_url( $embed_url ) );
+            printf( '<a href="%s" class="lightbox-link lightbox-play" data-lity></a>', esc_url( $portfolio_url ) );
         endif;
 
         printf( '<a href="%s" rel="bookmark">', esc_url( $portfolio_url ) ); ?>

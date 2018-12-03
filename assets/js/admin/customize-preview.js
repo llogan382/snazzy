@@ -19,6 +19,27 @@
 		});
 	});
 
+	//Update the blog description in real time...
+	wp.customize( 'custom_blog_title', function( value ) {
+		value.bind( function( to ) {
+			$( '.archive-title' ).text( to );
+		} );
+	} );
+
+	//Update the blog description in real time...
+	wp.customize( 'snazzy_custom_ftc', function( value ) {
+		value.bind( function( to ) {
+			$( '.snazzy-custom-ftc' ).text( to );
+		} );
+	} );
+
+	//Update the blog description in real time...
+	wp.customize( 'snazzy_custom_ftc_link', function( value ) {
+		value.bind( function( to ) {
+			$( '.snazzy-custom-ftc-link' ).text( to );
+		} );
+	} );
+
 	wp.customize( 'custom_logo_max_width', function( value ) {
 		value.bind( function( to ) {
 			var style, el;

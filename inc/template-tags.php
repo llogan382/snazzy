@@ -28,11 +28,7 @@ if ( ! function_exists( 'snazzy_pagination' ) ) :
 		else :
 			// Previous/next page navigation.
 			the_posts_pagination(
-				array(
-					'prev_text'          => esc_html__( 'Previous', '@@textdomain' ),
-					'next_text'          => esc_html__( 'Next', '@@textdomain' ),
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . esc_html__( 'Page', '@@textdomain' ) . ' </span>',
-				)
+
 			);
 
 		endif;
@@ -356,7 +352,7 @@ if ( ! function_exists( 'snazzy_gallery' ) ) :
 		$attachments = get_posts( $args );
 		?>
 
-		<div class="project-assets">
+		<div id="snzy-custom-ordering" class="project-assets">
 
 			<?php
 			if ( ! post_password_required() ) {
@@ -439,12 +435,34 @@ if ( ! function_exists( 'snazzy_gallery' ) ) :
 								'strong' => array(),
 							);
 							?>
+							<?php	
+							$portfolio_date = get_post_meta($post->ID, '_bean_portfolio_date', true);
+							$portfolio_client = get_post_meta($post->ID, '_bean_portfolio_client', true);
+							$portfolio_role = get_post_meta($post->ID, '_bean_portfolio_role', true);
+							$portfolio_views = get_post_meta($post->ID, '_bean_portfolio_views', true);
+							$portfolio_cats = get_post_meta($post->ID, '_bean_portfolio_cats', true);
+							$portfolio_tags = get_post_meta($post->ID, '_bean_portfolio_tags', true);
+							$portfolio_url = get_post_meta($post->ID, '_bean_portfolio_url', true);
+							$portfolio_url_clean = str_replace("http://","",$portfolio_url);
+							$portfolio_url_clean = preg_replace('/\s+/', '', $portfolio_url_clean);	
+							$external_url = get_post_meta($post->ID, '_bean_portfolio_external_url', true);
+							$portfolio_url = ( $external_url ) == true ? $external_url : get_the_permalink() ;
 
+							?>
+							<?php if ($portfolio_url && !$portfolio_client ) { ?>
+							<h6 class="url">
+								<span><a href="<?php echo esc_url($portfolio_url); ?>" target="_blank"><?php echo esc_html( $portfolio_url_clean ); ?></a></span>
+							</h6>
+						<?php } ?>
 							<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
 
 								<?php
+
 								if ( true === get_theme_mod( 'portfolio_lightbox', true ) ) {
 									echo '<a href="' . esc_url( $src[0] ) . '" class="lightbox-link" title="' . wp_kses( $caption, $allowed_html_array ) . '" alt="' . esc_attr( $alt ) . '" itemprop="contentUrl" data-size="' . esc_attr( $src[1] ) . 'x' . esc_attr( $src[2] ) . '">';
+								} else {
+									echo '<a href="' . esc_url($portfolio_url) . '" target="_blank"' . esc_html( $portfolio_url_clean ) . '"</a>';
+							
 								}
 
 								if ( true === get_theme_mod( 'portfolio_lazyload', true ) ) {
@@ -456,12 +474,15 @@ if ( ! function_exists( 'snazzy_gallery' ) ) :
 									echo '<img src="' . esc_url( $src[0] ) . '"/>';
 								}
 
-								if ( true === get_theme_mod( 'portfolio_lightbox', true ) ) {
-									echo '</a>'; }
+								// if ( true === get_theme_mod( 'portfolio_lightbox', true ) ) {
+									echo '</a>'; 
+								// }
+
 
 								if ( $caption ) {
 									echo '<div class="project-caption">' . wp_kses( $caption, $allowed_html_array ) . '</div>';
 								}
+
 								?>
 
 							</figure>
