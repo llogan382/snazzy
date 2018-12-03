@@ -29,16 +29,7 @@ get_header(); ?>
 				}
 			}
 
-			the_post_navigation(
-				array(
-					'next_text' => '<span class="meta-nav" aria-hidden="true"></span> ' .
-						'<span class="screen-reader-text">' . esc_html__( 'Next Post', '@@textdomain' ) . '</span> ' .
-						'<span class="post-title">&rarr;</span>',
-					'prev_text' => '<span class="meta-nav" aria-hidden="true"></span> ' .
-						'<span class="screen-reader-text">' . esc_html__( 'Previous Post', '@@textdomain' ) . '</span> ' .
-						'<span class="post-title">&larr;</span>',
-				)
-			);
+		
 
 		endwhile;
 		?>

@@ -28,15 +28,6 @@
         <?php
         the_content();
 
-        wp_link_pages( array(
-            'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', '@@textdomain' ) . '</span>',
-            'after'       => '</div>',
-            'link_before' => '<span>',
-            'link_after'  => '</span>',
-            'pagelink'    => '<span class="screen-reader-text">' . esc_html__( 'Page', '@@textdomain' ) . ' </span>%',
-            'separator'   => '<span class="screen-reader-text">, </span>',
-        ) );
-
         /*
          * Check to see if the page is using specialized page templates.
          * If so, load the functions below to get the specialized content.

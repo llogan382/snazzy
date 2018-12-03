@@ -46,7 +46,7 @@ function snazzy_customize_register( $wp_customize ) {
 		'snazzy_theme_options', array(
 			'title'       => esc_html__( 'Theme Options', '@@textdomain' ),
 			'description' => esc_html__( 'Customize various options throughout the theme with the settings within this panel.', '@@textdomain' ),
-			'priority'    => 30,
+			'priority'    => 40,
 		)
 	);
 
@@ -111,12 +111,85 @@ function snazzy_customize_register( $wp_customize ) {
 	 *
 	 * @see https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_section
 	 */
+
 	$wp_customize->add_section(
-		'snazzy_portfolio', array(
-			'title' => esc_html__( 'Portfolio', '@@textdomain' ),
-			'panel' => 'snazzy_theme_options',
+		'custom_options', array(
+			'title' => esc_html__( 'Custom Options', '@@textdomain' ),
+			'priority' => 35,
 		)
 	);
+
+	$wp_customize->add_setting(
+		'custom_blog_title', array(
+			'default'  => 'Title',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'esc_html',
+			)
+	);
+
+	$wp_customize->add_control(
+		'custom_blog_title', array(
+			'type'        => 'text',
+			'label'       => esc_html__( 'Blog Title', '@@textdomain' ),
+			'description' => esc_html__( 'Enter the text of the contact form button.', '@@textdomain' ),
+			'section'     => 'custom_options',
+		)
+	);
+
+	$wp_customize->selective_refresh->add_partial(
+		'custom_blog_title', array(
+			'selector'        => '#custom_title',
+			'render_callback' => 'snazzy_customize_partial_blogdescription',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'snazzy_custom_ftc', array(
+			'default'  => 'The Giftler is supported by wonderful readers like you. When you buy through links on our site, we may earn a commission.',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'esc_html',
+			)
+	);
+
+	$wp_customize->add_control(
+		'snazzy_custom_ftc', array(
+			'type'        => 'text',
+			'label'       => esc_html__( 'FTC Warning', '@@textdomain' ),
+			'description' => esc_html__( 'Enter the text to appear in the FTC warning in the header.', '@@textdomain' ),
+			'section'     => 'custom_options',
+		)
+	);
+
+	$wp_customize->selective_refresh->add_partial(
+		'snazzy_custom_ftc', array(
+			'selector'        => '#snazzy-custom-ftc',
+			'render_callback' => 'snazzy_customize_partial_blogdescription',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'snazzy_custom_ftc_link', array(
+			'default'  => 'thegiftler.com',
+			'transport' => 'postMessage',
+			)
+	);
+
+	$wp_customize->add_control(
+		'snazzy_custom_ftc_link', array(
+			'type'        => 'url',
+			'label'       => esc_html__( 'FTC Warning Links', '@@textdomain' ),
+			'description' => esc_html__( 'Enter any links for FTC warnings.', '@@textdomain' ),
+			'section'     => 'custom_options',
+		)
+	);
+
+	$wp_customize->selective_refresh->add_partial(
+		'snazzy_custom_ftc_link', array(
+			'selector'        => '#snazzy-custom-ftc-link',
+			'render_callback' => 'snazzy_customize_partial_blogdescription',
+		)
+	);
+
 
 	// Add the portfolio loop selector setting and control.
 	$wp_customize->add_setting(
@@ -125,7 +198,12 @@ function snazzy_customize_register( $wp_customize ) {
 			'sanitize_callback' => 'bean_sanitize_checkbox',
 		)
 	);
-
+	$wp_customize->add_section(
+		'snazzy_portfolio', array(
+			'title' => esc_html__( 'Portfolio', '@@textdomain' ),
+			'panel' => 'snazzy_theme_options',
+		)
+	);
 	$wp_customize->add_control(
 		'portfolio_loop', array(
 			'type'        => 'checkbox',
@@ -466,6 +544,8 @@ function snazzy_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'contact_email' )->transport        = 'postMessage';
 	$wp_customize->get_setting( 'powered_by_snazzy' )->transport    = 'postMessage';
 	$wp_customize->get_setting( 'powered_by_wordpress' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'custom_blog_title' )->transport    = 'postMessage';
+
 }
 
 add_action( 'customize_register', 'snazzy_customize_register', 11 );

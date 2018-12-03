@@ -1389,6 +1389,17 @@ h1.site-title {
 	margin-left: -2.5%;
 }
 
+.snazzy-custom-ftc {
+	position: fixed!important;
+	margin-top: -3em;
+	overflow: hidden;
+}
+.snazzy-custom-ftc-link {
+	margin-top: 0em;
+	color: #21759b;
+}
+
+
 .projects--divide {
 	background: rgba(0,0,0,0.1);
 	clear: both;
@@ -1409,9 +1420,9 @@ h1.site-title {
 		margin-bottom: 3%;
 	}
 
-	article {
-		display: 
-	}
+	// article {
+	// 	display: 
+	// }
 
 	.project-description {
 		padding-left: 3%;
@@ -1449,6 +1460,8 @@ h1.site-title {
 
 	.project-assets {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.project-description {
@@ -1750,7 +1763,9 @@ h1.site-title {
 	.archive-title {
 		display: none;
 	}
+
 }
+
 
 .entry-media {
 	position: relative;
