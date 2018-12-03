@@ -14,3 +14,5 @@ _demo/
 _dist/
 node_modules
 _dist/.DS_Store
+vendor
+Sites

@@ -18,6 +18,10 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 
+<?php if (is_singular() ) {
+	echo '“The Giftler is supported by wonderful readers like you. When you buy through links on our site, we may earn a commission.”
+	';}
+?>
 	<main id="main" class="site-main site-main--wrapper" role="main">
 
 		<?php

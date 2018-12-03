@@ -65,7 +65,8 @@ $portfolio_url_clean = preg_replace('/\s+/', '', $portfolio_url_clean);
 
     <?php if ($portfolio_url && !$portfolio_client ) { ?>
         <h6 class="url">
-            <?php esc_html_e( 'URL: ', '@@textdomain' ); ?><span><a href="<?php echo esc_url($portfolio_url); ?>" target="_blank"><?php echo esc_html( $portfolio_url_clean ); ?></a></span>
+            <?php esc_html_e( 'URL: ', '@@textdomain' ); ?>
+            <span><a href="<?php echo esc_url($portfolio_url); ?>" target="_blank"><?php echo esc_html( $portfolio_url_clean ); ?></a></span>
         </h6>
     <?php } ?>
 

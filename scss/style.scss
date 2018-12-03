@@ -265,7 +265,7 @@ input,
 select,
 textarea {
 	color: #101c38;
-	font-family: Karla, HelveticaNeue, Helvetica, Tahoma, sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 19px;
 	font-weight: 400;
 	letter-spacing: -0.03em;
@@ -293,6 +293,7 @@ h6 {
 	clear: both;
 	font-weight: 400;
 	margin: 0;
+	font-family: 'Playfair Display', serif;
 	font-variant-ligatures: common-ligatures;
 	text-rendering: optimizeLegibility;
 }
@@ -1128,7 +1129,7 @@ section::after {
 .site-header p,
 .site-header a {
 	color: #888;
-	font-size: 15px;
+	font-size: 19px;
 	letter-spacing: normal;
 	line-height: 1.65;
 }
@@ -1290,7 +1291,7 @@ h1.site-title {
 .project-assets {
 	float: left;
 	text-align: center;
-	width: 72%;
+	width: 50%;
 }
 
 .project-assets figure {
@@ -1330,7 +1331,7 @@ h1.site-title {
 	float: left;
 	padding-left: 2.5%;
 	padding-top: 3.5%;
-	width: 28%;
+	width: 50%;
 }
 
 .project-description .navigation {
@@ -1388,6 +1389,17 @@ h1.site-title {
 	margin-left: -2.5%;
 }
 
+.snazzy-custom-ftc {
+	position: fixed!important;
+	margin-top: -3em;
+	overflow: hidden;
+}
+.snazzy-custom-ftc-link {
+	margin-top: 0em;
+	color: #21759b;
+}
+
+
 .projects--divide {
 	background: rgba(0,0,0,0.1);
 	clear: both;
@@ -1407,6 +1419,10 @@ h1.site-title {
 	.project-assets figure {
 		margin-bottom: 3%;
 	}
+
+	// article {
+	// 	display: 
+	// }
 
 	.project-description {
 		padding-left: 3%;
@@ -1444,6 +1460,8 @@ h1.site-title {
 
 	.project-assets {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.project-description {
@@ -1745,7 +1763,9 @@ h1.site-title {
 	.archive-title {
 		display: none;
 	}
+
 }
+
 
 .entry-media {
 	position: relative;
